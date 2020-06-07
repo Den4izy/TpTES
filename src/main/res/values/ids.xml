@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="TV_powerFull" type="id" />
+    <item name="TV_inWork" type="id" />
+</resources>

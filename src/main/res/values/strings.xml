@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TpTES 2</string>
+    <string name="PowerStr">Відпуск</string>
+    <string name="PowerIntStr">Відпуск/год</string>
+    <string name="ButtonText">Оновити</string>
+    <string name="PowerFull">Навантаження</string>
+    <string name="inWorkText">В роботі:</string>
+</resources>
