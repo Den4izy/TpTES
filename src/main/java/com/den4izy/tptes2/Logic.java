@@ -48,7 +48,7 @@ public class Logic {
                     }
                 }
 
-
+            //testing
             }
         }
         isbnParts = stroke.split("rowspan=2 =");
