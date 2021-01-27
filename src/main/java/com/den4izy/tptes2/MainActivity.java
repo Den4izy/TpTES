@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,17 +18,14 @@ import static com.den4izy.tptes2.Logic.st;
 public class MainActivity extends AppCompatActivity {
 
     private TextView power;
-    private TextView powerInt;
-    private TextView powerFull;
     private TextView inWork;
     private String powerStatus;
-    private String powerIntStatus;
-    private String powerFullStatus;
+    private String powerStr;
     private String inWorkStatus;
     private Button button;
 
 
-    Thread thread = new Thread() {
+    Thread thread = new Thread() {             // Потік оновлення
         @Override
         public void run() {
             try {
@@ -36,17 +34,15 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            String[] arr;
-                            arr = com.den4izy.tptes2.Logic.st();
-                            //powerStatus = search2(ht())[3];
-                            powerStatus = com.den4izy.tptes2.Logic.search(arr[0],14,20) + " МВт.";
-                            powerIntStatus = com.den4izy.tptes2.Logic.search(arr[1],14,20) + " МВт.";
-                            powerFullStatus = com.den4izy.tptes2.Logic.search(arr[2],8,11) + " МВт.";
-                            inWorkStatus = search2(ht());
-                            power.setText(powerStatus);
-                            powerInt.setText(powerIntStatus);
-                            powerFull.setText(powerFullStatus);
-                            inWork.setText(inWorkStatus);
+
+                            Log.d("REFR","ooooooo");
+                            powerStr = com.den4izy.tptes2.Logic.st();  // Строка з потужністю
+                            powerStatus = com.den4izy.tptes2.Logic.search(powerStr,8,11) + " МВт.";  // оброблена строка потужності
+                            power.setText(powerStatus);  // установка потужності на екран
+
+                            inWorkStatus = search2(ht()); // строка з робочими блоками
+                            inWork.setText(inWorkStatus);  // установка блоків на екран
+
                         }
                     });
                 }
@@ -61,37 +57,23 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
         power = findViewById(R.id.TV_power);
-        powerInt = findViewById(R.id.TV_powerInt);
-        powerFull = findViewById(R.id.TV_powerFull);
         inWork = findViewById(R.id.TV_inWork);
         button = findViewById(R.id.B_button);
-        com.den4izy.tptes2.Logic.create();
-        String[] arr;
-        arr = com.den4izy.tptes2.Logic.st();
-        powerStatus = com.den4izy.tptes2.Logic.search(arr[0],14,20) + " МВт.";
-        powerIntStatus = com.den4izy.tptes2.Logic.search(arr[1],14,20) + " МВт.";
-        powerFullStatus = com.den4izy.tptes2.Logic.search(arr[2],8,11) + " МВт.";
-        inWorkStatus = search2(ht());
+        com.den4izy.tptes2.Logic.create();  // запуск метода з ініціалізацією всіх даних(URL, СON..)
+        powerStr= com.den4izy.tptes2.Logic.st();
+        powerStatus = com.den4izy.tptes2.Logic.search(powerStr,8,11) + " МВт.";
         power.setText(powerStatus);
-        powerInt.setText(powerIntStatus);
-        powerFull.setText(powerFullStatus);
+
+
+        inWorkStatus = search2(ht());
         inWork.setText(inWorkStatus);
-        View.OnClickListener onClickListener = new View.OnClickListener() {
+        View.OnClickListener onClickListener = new View.OnClickListener() { // опрацювання кнопки
             @Override
             public void onClick(View v) {
-                String[] arr;
-                arr = com.den4izy.tptes2.Logic.st();
-                powerStatus = com.den4izy.tptes2.Logic.search(arr[0],14,20) + " МВт.";
-                powerIntStatus = com.den4izy.tptes2.Logic.search(arr[1],14,20) + " МВт.";
-                powerFullStatus = com.den4izy.tptes2.Logic.search(arr[2],8,11) + " МВт.";
-                inWorkStatus = search2(ht());
-                power.setText(powerStatus);
-                powerInt.setText(powerIntStatus);
-                powerFull.setText(powerFullStatus);
-                inWork.setText(inWorkStatus);
+                setContentView(R.layout.settings_activity);
             }
         };
         button.setOnClickListener(onClickListener);
-        thread.start();
+        thread.start();  // запуск оновлення
     }
 }

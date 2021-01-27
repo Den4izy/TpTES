@@ -26,18 +26,6 @@
                 android:padding="10dp"
                 android:textSize="20sp" />
             <TextView
-                android:text="@string/PowerIntStr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="20sp"/>
-            <TextView
-                android:text="@string/PowerFull"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="20sp"/>
-            <TextView
                 android:text="@string/inWorkText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,20 +47,6 @@
                 android:padding="10dp"
                 android:textSize="20sp"/>
             <TextView
-                android:id="@+id/TV_powerInt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:padding="10dp"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@id/TV_powerFull"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:padding="10dp"
-                android:textSize="20sp"/>
-            <TextView
                 android:id="@id/TV_inWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +62,6 @@
         android:id="@+id/B_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
         android:text="@string/ButtonText"/>
 
 </LinearLayout>
