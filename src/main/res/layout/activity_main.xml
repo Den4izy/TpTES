@@ -62,6 +62,7 @@
         android:id="@+id/B_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:text="@string/ButtonText"/>
 
 </LinearLayout>

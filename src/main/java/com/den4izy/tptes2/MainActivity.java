@@ -2,6 +2,7 @@ package com.den4izy.tptes2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private String powerStr;
     private String inWorkStatus;
     private Button button;
+    private int w;
 
 
     Thread thread = new Thread() {             // Потік оновлення
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
                             Log.d("REFR","ooooooo");
                             powerStr = com.den4izy.tptes2.Logic.st();  // Строка з потужністю
                             powerStatus = com.den4izy.tptes2.Logic.search(powerStr,8,11) + " МВт.";  // оброблена строка потужності
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
                             inWorkStatus = search2(ht()); // строка з робочими блоками
                             inWork.setText(inWorkStatus);  // установка блоків на екран
+
+
 
                         }
                     });
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() { // опрацювання кнопки
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.settings_activity);
+                setContentView(R.layout.settings_activity); // відкриваємо нове вікно
             }
         };
         button.setOnClickListener(onClickListener);
